@@ -14,6 +14,7 @@ class Detail extends Component {
       blogger: {},
       comments: [
         {
+          _id: "",
           title: "",
           content: "",
           created_dt: ""
@@ -149,9 +150,9 @@ class Detail extends Component {
         })
         .then(dbComment => {
           console.log(dbComment.data);
-          return dbComment;
+          this.refreshBlog(this.state.blog._id);
         })
-        .then(dbComment => this.refreshBlog(dbComment.blog))
+        // .then(dbComment => this.refreshBlog(dbComment.blog))
         .catch(err => console.log(err));
     }
   };
@@ -184,7 +185,7 @@ class Detail extends Component {
         <Row>
           <Col size="md-12">
             <h1 className="topic-style">{this.state.blog.topic}</h1>
-            <h2>By Dr. {this.state.currentUser.displayName}</h2>
+            {/* <h2>By {this.state.currentUser.displayName}</h2> */}
           </Col>
         </Row>
         <Row>
