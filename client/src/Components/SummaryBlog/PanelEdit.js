@@ -5,7 +5,6 @@ import { Input, TextArea, FormBtn } from "../../Components/Form";
 import Button from '../../Components/Button';
 const dateformat = require("dateformat");
 
-
 class PanelEdit extends React.Component {
   constructor(props){
     super(props);
@@ -13,9 +12,6 @@ class PanelEdit extends React.Component {
       open: false
     };
   }
-
-
-
 
   render(){
     return (

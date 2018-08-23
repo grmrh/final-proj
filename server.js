@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3002;
 app.set('port', PORT);
 const http = require('http');
 
-// Serve up static assets (usually on heroku)
+// Serve up static assets (usually on heroku)K
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }

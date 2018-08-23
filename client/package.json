@@ -5,7 +5,6 @@
   "proxy": "http://localhost:3002/",
   "dependencies": {
     "axios": "^0.18.0",
-    "dateformat": "^3.0.3",
     "dotenv": "^6.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
@@ -15,7 +14,7 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "react-scripts": "^1.1.4"
+    "react-scripts": "^1.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

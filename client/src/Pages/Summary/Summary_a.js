@@ -7,9 +7,6 @@ import { Col, Row, Container } from "../../Components/Grid";
 import Button from '../../Components/Button';
 import BlogModal from "./BlogModal";
 import BlogEditModal from "./BlogEditModal";
-import PanelEdit from "../../Components/SummaryBlog"
-import SummaryBlog from "../../Components/SummaryBlog";
-import CommentReadModal from "./CommentReadModal";
 import './Summary.css';
 const dateformat = require('dateformat');
 
@@ -117,6 +114,7 @@ class Summary extends Component {
     this.props.history.push("/Summary");
   };
 
+
   render() {
     return (
       <Container>
@@ -127,47 +125,45 @@ class Summary extends Component {
         </Row>
         <Row >
           <Col size="sm-12">
-            <BlogModal blogsContext= {this.state.blogs} text="Add blog"/>
+            <BlogModal text="Add blog"/>
           </Col>
         </Row>
-        <Row>          
-          {!this.state.blogs || !this.state.blogs.length ? (
-            <h3 className="textCenter">You haven't posted any blogs</h3>
-          ) : (
-            <List>
-            {this.state.blogs.map(blog => {
-              return (
-                <div key={blog._id}>
-                  <ListItem key={blog._id}>
-                  <Row>
-                    <Col size="sm-3">
-                      <img
-                        className="card-img-top"
-                        src={blog.imageSrc}
-                        alt={blog.topic}
-                        height="190px"
-                      />
-                    </Col>
-                    <Col size="sm-7">
-                      <label><strong>{blog.topic}</strong> {dateformat(blog.created_dt, "mmmm dS, yyyy")}</label>                                       
-                      <div><p style={{width:"100%"}} >{blog.content}</p></div>
-                    </Col>
-                    <Col size="sm-2">
-                    <span>
-                    <label style={{float:"right", dispaly:"in-line"}}>
-                        <CommentReadModal blogContext={blog}/>
-                        <BlogEditModal blogContext={blog} />                    
-                        <Button onClick={() => this.handleDeleteBlog(blog._id)} className="btn btn-sm btn-secondary" btntext="Delete blog"></Button>
-                      </label></span>
-                      {/* <div><p style={{width:"100%"}} >{blog.content}</p></div> */}
-                    </Col>
-                  </Row>
-                  </ListItem>
-                </div>
-              )
-            })}
-              </List>
-          )}   
+        <Row>
+          
+            {!this.state.blogs || !this.state.blogs.length ? (
+              <h3 className="textCenter">You haven't posted any blogs</h3>
+            ) : (
+              <List>
+              {this.state.blogger.blogs.map(blog => {
+                //console.log(blog);
+                return (
+                  <div key={blog._id}>
+                    <ListItem key={blog._id}>
+                    <Row>
+                      <Col size="sm-3">
+                        {/* <img src={blog.imageSrc} alt={blog.topic} /> */}
+                        <img
+                          className="card-img-top"
+                          src={blog.imageSrc}
+                          alt={blog.topic}
+                          height="190px"
+                        />
+                      </Col>
+                      <Col size="sm-9">
+                        <span><label><strong>{blog.topic}</strong> {dateformat(blog.created_dt, "mmmm dS, yyyy")}</label>                     
+                        <label style={{float:"right", dispaly:"in-line"}}>
+                          <BlogEditModal blogContext={blog} callbackFromSummary= {this.hardReload} />
+                          <Button onClick={() => this.handleDeleteBlog(blog._id)} className="btn btn-sm btn-secondary" btntext="Delete"></Button>
+                        </label></span>
+                        <div><p style={{width:"100%"}} >{blog.content}</p></div>
+                      </Col>
+                    </Row>
+                    </ListItem>
+                  </div>
+                )
+              })}
+               </List>
+            )}   
         </Row>
       </Container>
     );

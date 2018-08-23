@@ -1,6 +1,7 @@
 import React from "react";
 import "./Nav.css";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+//import { GoogleLogin, GoogleLogout } from "react-google-login";
 import Login from "../../Pages/Login";
 
 // console log google auth response
@@ -39,10 +40,12 @@ const Nav = () => (
 
     {/*BEGIN STEPH NAV */}
     {/* Links dependent on login status*/}
-    <Login />
+    {/* <Login /> */}
     {/*END STEPH NAV */}
 
-    {/* <div className="collapse navbar-collapse" id="navbarColor02">
+    <div className="collapse navbar-collapse" id="navbarColor02">
+
+
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <NavLink className="nav-link" to="/DoctorPost">
@@ -63,7 +66,8 @@ const Nav = () => (
 
           <Login />
 
-    </div> */}
+
+    </div>
   </nav>
 );
 

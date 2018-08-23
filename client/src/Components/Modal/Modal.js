@@ -1,7 +1,7 @@
 import React from "react";
 import ReactModal from 'react-modal';
 
-const Modal = ({ handleClose, show, children, btnColor, btntext }) => {
+const Modal = ({ handleClose, show, children, btnText }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   return (
     <div className={showHideClassName}>
@@ -9,9 +9,17 @@ const Modal = ({ handleClose, show, children, btnColor, btntext }) => {
            isOpen={show}
            contentLabel="Minimal Modal Example"
         > {children}
-        <button onClick={handleClose} className={btnColor}>{btntext}</button>
+        <button onClick={handleClose}>{btnText}</button>
         </ReactModal>
       </div>
+
+     /* { <div className={showHideClassName}>
+      <section className="modal-main">
+        {children}
+        <button onClick={handleClose}>Close</button>
+      </section>
+    </div>} */
+
   );
 }
 
